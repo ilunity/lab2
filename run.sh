@@ -2,5 +2,5 @@
 
 for i in $(seq 1 $n)
 do
-    docker run -v "$(pwd)/shared":/shared -tid lab2
+    docker run -v "$(pwd)/shared":/shared -d lab2
 done

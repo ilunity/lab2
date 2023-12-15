@@ -1,9 +1,9 @@
 getNameFromNumber () {
-    if [ $1 -gt 100 ]; then
+    if [ $1 -gt 99 ]; then
         echo $1
         return
     fi
-    if [ $1 -gt 10 ]; then
+    if [ $1 -gt 9 ]; then
         echo "0$1"
         return
     fi
@@ -24,10 +24,9 @@ getFreeName () {
 
 writeFile () {
     fileName=$(getFreeName)
-    echo "$CONTAINER_ID $fileName" > "$fileName"
+    echo "$HOSTNAME $fileName" > "$fileName"
     echo "$fileName"
 }
-
 
 SLEEP_TIME=1
 
