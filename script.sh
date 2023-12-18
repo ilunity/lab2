@@ -38,7 +38,7 @@ do
     echo "$createdFile"
     sleep $SLEEP_TIME
 
-    flock -s "$createdFile" -c "rm $createdFile"
+    rm $createdFile
     echo "removed"
     sleep $SLEEP_TIME
 done
