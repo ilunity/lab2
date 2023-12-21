@@ -1,8 +1,8 @@
 containers=$(docker ps -q)
 if [[ $containers != "" ]]; then
-  echo "Removing running containers..."
-  docker rm -f $containers
-  echo "Running containers have been stopped and removed"
+  echo "Removing lab2 containers..."
+  docker rm -f $(docker ps -a -q --filter "ancestor=lab2")
+  echo "lab2 containers have been stopped and removed"
 fi
 
 rm -r ./shared/*
