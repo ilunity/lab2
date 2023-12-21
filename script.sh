@@ -35,14 +35,17 @@ cd ./shared || exit
 while true
 do
     exec 9>>lock
-    flock -n 9 || exit
+    flock -n -s 9 || exit
     fileName=$(writeFile)
     exec 9<&-
 
-    echo "$fileName created"
-    sleep $SLEEP_TIME
+    if [ -n "$fileName" ]; then
+      echo "$fileName created"
+      sleep $SLEEP_TIME
+      rm $fileName
+      echo "$fileName removed"
+      fileName=""
+    fi
 
-    rm $fileName
-    echo "$fileName removed"
     sleep $SLEEP_TIME
 done
