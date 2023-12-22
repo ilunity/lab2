@@ -35,7 +35,7 @@ cd ./shared || exit
 while true
 do
     exec 9>>lock
-    flock -n -s 9 || exit
+    flock -s 9 || exit
     fileName=$(writeFile)
     exec 9<&-
 
